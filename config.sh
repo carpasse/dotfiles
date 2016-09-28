@@ -4,4 +4,4 @@
 export NVM_DIR="~/.nvm"
 
 # Root folder of your projects
-export MOL_DIR="~/dev"
+export MOL_DIR="~/dev/mailOnline/mol-fe"
