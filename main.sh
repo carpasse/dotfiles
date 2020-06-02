@@ -14,4 +14,3 @@ source $BASH_PROFILE_DIR/src/osx-integration.sh
 source $BASH_PROFILE_DIR/src/process-management.sh
 source $BASH_PROFILE_DIR/src/search.sh
 source $BASH_PROFILE_DIR/src/web-development.sh
-source $BASH_PROFILE_DIR/src/mol.sh

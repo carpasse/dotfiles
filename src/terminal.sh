@@ -8,10 +8,16 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
 # Bash completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+if [ -f `brew --prefix`/usr/local/Cellar/bash-completion/1.3_3/etc/bash_completion ]; then
+  . `brew --prefix`/usr/local/Cellar/bash-completion/1.3_3/etc/bash_completion
 fi
 
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 # Change Prompt
-export PS1="________________________________________________________________________________\n| \[$txtcyn\]\w\[$txtrst\] \$git_branch(\u) \n| => "
-export PS2="| => "
+setopt PROMPT_SUBST
+PROMPT='%{%F{green}%}%9c%{%F{yellow}%}$(parse_git_branch)%{%F{none}%}$ '
+# export PS1='\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ '
+# export PS2='| => '

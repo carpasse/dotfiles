@@ -4,8 +4,8 @@
 # Grab and install latest node version
 alias updateNode="nvm install node --reinstall-packages-from=node"
 
-# Local gulp shortcut
-alias gulp="./node_modules/.bin/gulp"
+# Local jest shortcut
+alias jest="./node_modules/.bin/jest"
 
 # Edit httpd.conf
 alias apacheEdit='sudo edit /etc/httpd/httpd.conf'
