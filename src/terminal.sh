@@ -4,13 +4,33 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-# Iterm2 shell integration
-test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+# Add Oh my Zsh https://github.com/ohmyzsh/ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Bash completion
-if [ -f `brew --prefix`/usr/local/Cellar/bash-completion/1.3_3/etc/bash_completion ]; then
-  . `brew --prefix`/usr/local/Cellar/bash-completion/1.3_3/etc/bash_completion
+# Install powerline fonts for zsh https://github.com/powerline/fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+cd ..
+rm -rf fonts
+
+ZSH_THEME="agnoster"
+
+
+# Iterm2 shell integration https://www.iterm2.com/documentation-shell-integration.html#:~:text=The%20easiest%20way%20to%20install,and%20fish%202.3%20or%20later.
+curl -L https://iterm2.com/shell_integration/zsh \
+-o ~/.iterm2_shell_integration.zsh
+source ~/.iterm2_shell_integration.zsh
+
+# brew shell completion https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
 fi
+
+chmod go-w "$(brew --prefix)/share"
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'

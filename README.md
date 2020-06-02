@@ -21,5 +21,5 @@ brew install git bash-completion
 And finally run
 ```
 ./install.sh
-source ~/.bash_profile
+source ~/.zshrc
 ```
