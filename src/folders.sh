@@ -31,7 +31,7 @@ alias lrat='ls -luGR'
 # Always list directory contents upon 'cd' and load nvm if .nvmrc is present
 cd () {
   builtin cd "$@";
-  sll;
+
   if [[ -f .nvmrc && -r .nvmrc ]]; then
     nvm use || nvm install
   fi
